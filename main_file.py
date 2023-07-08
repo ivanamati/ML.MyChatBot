@@ -178,11 +178,28 @@ def chat():
             break
         else:
             print("upisali ste: ", inp)
-                # radimo prediction i moramo mu dati podatke u listi za izradu predikcije
+            
+            # radimo prediction i moramo mu dati podatke u listi za izradu predikcije
             result = model.predict([bag_of_words_from_user(recenica=inp, words=words)])
-            print(result)
+            # ovdje dobijemo listu predikcija upisanog inputa, odnosno koliko je vjerojatno da pripada odredenom neuronu odnosno "tag"-u
+            # npr upisali smo "hi"
+            # a predikcija pripadnosti odredenom neuronu je ovakva: [[0.219868   0.11157148  0.6482837  0.00135727  0.00198865  0.01693084]]
+            
+            # ovdje cemo dobiti sada index onog rezultata koji ima najveci broj, odnosno predikciju
+            results_index = np.argmax(result)
+            # trazimo label (odnosno tag) prema najvecem indeksu iz predikcije
+            # na ovaj nacin dobivamo tag za koji model misli da mu user input pripada
+            tag = labels[results_index]
+            #print(tag)
 
-        
+            for tg in data["intents"]:
+                if tg["tag"] == tag:
+                    responses = tg["responses"]
+
+            print(random.choice(responses))
+
+
+
 
 chat()
 

@@ -144,7 +144,7 @@ model_file = "model.ftlearn"
 print("Putanja do datoteke modela:", os.path.abspath(model_file))
 
 try:
-    model.load("model.ftlearn")
+    model.load("model.tflearn")
 except:
     #treniranje modela
     model.fit(training, output, n_epoch=300, batch_size=8, show_metric=True)
@@ -158,12 +158,12 @@ def bag_of_words_from_user(recenica, words):
     bag = [0 for _ in range(len(words))]
 
     rijeci_u_recenici = nltk.word_tokenize(recenica)
-    rijeci_u_recenici = [stemmer.stem(rijec.lower) for rijec in rijeci_u_recenici]
+    rijeci_u_recenici = [stemmer.stem(rijec.lower()) for rijec in rijeci_u_recenici if rijec !="?"]
 
     for pojedina_rijec in rijeci_u_recenici:
         for index, word in enumerate(words):
             if word == pojedina_rijec:
-                bag[index].append(1)
+                bag[index]=1
 
     return np.array(bag)
 
@@ -172,9 +172,8 @@ def chat():
     print("Start talking with the bot! Type quit to stop the chat.")
     while True:
         inp = input("You: ")
-        if inp.lower == "quit" or "stop":
+        if inp.lower() in ["quit", "stop"]:
             break
-
         # radimo prediction i moramo mu dati podatke u listi za izradu predikcije
         result = model.predict([bag_of_words_from_user(recenica=inp, words=words)])
         print(result)
