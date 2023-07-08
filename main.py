@@ -147,3 +147,16 @@ except:
 
 ############################ MAKE PREDICTION
 
+# najprije radimo funkciju za bag of words od user inputa
+def bag_of_words_from_user(recenica, words):
+    bag = [0 for _ in range(len(words))]
+
+    rijeci_u_recenici = nltk.word_tokenize(recenica)
+    rijeci_u_recenici = [stemmer.stem(rijec.lower) for rijec in rijeci_u_recenici]
+
+    for pojedina_rijec in rijeci_u_recenici:
+        for index, word in enumerate(words):
+            if word == pojedina_rijec:
+                bag[index].append(1)
+
+    return np.array(bag)
