@@ -16,6 +16,7 @@ with open("intents.json") as file:
 try:
     with open("data.pickle", "rb") as file:
         words,labels, training, output = pickle.load(file)
+        print(labels)
 
 except:
     ########################## liste koje cemo koristiti
@@ -147,7 +148,7 @@ try:
     model.load("model.tflearn")
 except:
     #treniranje modela
-    model.fit(training, output, n_epoch=300, batch_size=8, show_metric=True)
+    model.fit(training, output, n_epoch=500, batch_size=8, show_metric=True)
     #spremanje modela
     model.save("model.tflearn")
 
@@ -160,7 +161,7 @@ def bag_of_words_from_user(recenica, words):
     rijeci_u_recenici = nltk.word_tokenize(recenica)
     
     rijeci_u_recenici = [stemmer.stem(rijec.lower()) for rijec in rijeci_u_recenici if rijec != "?"]
-    print("Ovo su korijeni rijeci upisane recenice: ", rijeci_u_recenici)
+    #print("Ovo su korijeni rijeci upisane recenice: ", rijeci_u_recenici)
 
     for pojedina_rijec in rijeci_u_recenici:
         for index, word in enumerate(words):
@@ -171,7 +172,7 @@ def bag_of_words_from_user(recenica, words):
 
 # kod koji ce pitati usera za input
 def chat():
-    print("Start talking with the bot! Type quit to stop the chat.")
+    print("Start talking with the Ivy bot! Type quit to stop the chat with Ivy.")
     while True:
         inp = input("You: ")
         if inp.lower() in ["quit", "stop"]:
@@ -180,26 +181,39 @@ def chat():
             print("upisali ste: ", inp)
             
             # radimo prediction i moramo mu dati podatke u listi za izradu predikcije
-            result = model.predict([bag_of_words_from_user(recenica=inp, words=words)])
+            result = model.predict([bag_of_words_from_user(recenica=inp, words=words)])[0] #0 je da dobijemo prvu listu
+            print(result)
             # ovdje dobijemo listu predikcija upisanog inputa, odnosno koliko je vjerojatno da pripada odredenom neuronu odnosno "tag"-u
             # npr upisali smo "hi"
             # a predikcija pripadnosti odredenom neuronu je ovakva: [[0.219868   0.11157148  0.6482837  0.00135727  0.00198865  0.01693084]]
             
-            # ovdje cemo dobiti sada index onog rezultata koji ima najveci broj, odnosno predikciju
+            # ovdje cemo dobiti sada index onog rezultata koji ima najveci broj, odnosno predikciju da pripada odredenom tagu!
             results_index = np.argmax(result)
+
             # trazimo label (odnosno tag) prema najvecem indeksu iz predikcije
             # na ovaj nacin dobivamo tag za koji model misli da mu user input pripada
             tag = labels[results_index]
             #print(tag)
+            
+            if result[results_index] > 0.6:
+                for tg in data["intents"]:
+                    if tg["tag"] == tag:
+                        responses = tg["responses"]
+                print(random.choice(responses))
 
-            for tg in data["intents"]:
-                if tg["tag"] == tag:
-                    responses = tg["responses"]
+            # 0.53039753 je vjerojatnost za hrvatski jezik; me radi jednakost za tocno tu vrijednost pa sam stavila da bude izmedu
+            elif 0.53039750 <(result[results_index]) < 0.53039754:
+                print("I don't understand Croatian,for now I communicate only in English :)")
 
-            print(random.choice(responses))
+            elif 0.532 < (result[results_index]) < 0.6:
+                for tg in data["intents"]:
+                    if tg["tag"] == "name":
+                        responses = tg["responses"]
+                #print("sada sam tu, a ovo je postotak: ", result[results_index])
+                print(random.choice(responses))
 
-
-
+            else:
+                print("Sorry, I didn't understand you, please try again :) ")
 
 chat()
 
