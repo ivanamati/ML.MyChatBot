@@ -172,7 +172,7 @@ def bag_of_words_from_user(recenica, words):
 
 # kod koji ce pitati usera za input
 def chat():
-    print("Start talking with the Ivy bot! Type quit to stop the chat with Ivy.")
+    print("\n\nStart talking with the Ivy Bot! (Type quit to stop the chat with Ivy.)")
     while True:
         inp = input("You: ")
         if inp.lower() in ["quit", "stop"]:
@@ -201,16 +201,12 @@ def chat():
                         responses = tg["responses"]
                 print(random.choice(responses))
 
-            # 0.53039753 je vjerojatnost za hrvatski jezik; me radi jednakost za tocno tu vrijednost pa sam stavila da bude izmedu
-            elif 0.53039750 <(result[results_index]) < 0.53039754:
-                print("I don't understand Croatian,for now I communicate only in English :)")
-
-            elif 0.532 < (result[results_index]) < 0.6:
-                for tg in data["intents"]:
-                    if tg["tag"] == "name":
-                        responses = tg["responses"]
-                #print("sada sam tu, a ovo je postotak: ", result[results_index])
-                print(random.choice(responses))
+            # elif 0.532 < (result[results_index]) < 0.6:
+            #     for tg in data["intents"]:
+            #         if tg["tag"] == "name":
+            #             responses = tg["responses"]
+            #     #print("sada sam tu, a ovo je postotak: ", result[results_index])
+            #     print(random.choice(responses))
 
             else:
                 print("Sorry, I didn't understand you, please try again :) ")
