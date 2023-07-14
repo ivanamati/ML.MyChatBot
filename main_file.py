@@ -144,13 +144,13 @@ model = tflearn.DNN(net) # ovo je vrste neuronske mreze koju smo odabrali za ova
 # Ispis putanje do datoteke modela
 # print("Putanja do datoteke modela:", os.path.abspath("model.ftlearn"))
 
-try:
-    model.load("model.tflearn")
-except:
+# try:
+#     model.load("model.tflearn")
+# except:
     #treniranje modela
-    model.fit(training, output, n_epoch=500, batch_size=8, show_metric=True)
-    #spremanje modela
-    model.save("model.tflearn")
+model.fit(training, output, n_epoch=500, batch_size=8, show_metric=True)
+#spremanje modela
+model.save("model.tflearn")
 
 ############################ MAKE PREDICTION
 
