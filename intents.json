@@ -8,14 +8,20 @@
           },
           {
             "tag": "goodbye",
-            "patterns": ["cya", "Goodbye", "I am Leaving", "Have a Good day"],
+            "patterns": ["cya", "Goodbye", "I am Leaving", "Have a Good day","bye","adio", "bye bye", "ciao"],
             "responses": ["Sad to see you go :(", "Talk to you later", "Goodbye!"],
+            "context_set": ""
+          },
+          {
+            "tag": "thanks",
+            "patterns": ["tnx","thank you","danke","hvala","thanks"],
+            "responses": ["You are welcome :)", "Not a problem, thank you :)", "I'm glad to help :)"],
             "context_set": ""
           },
           {
             "tag": "age",
             "patterns": ["how old", "how old is ivana", "what is your age", "how old are you", "age?"],
-            "responses": ["Ladie can't tell her age :)", "Nice try, but I would keep this Info for me :)", "I can tell you, that I was born in the 80's."],
+            "responses": ["Ladie can't tell her age :)", "Nice try, but Ivana would keep this Info for Interview :)", "I can tell you, that Ivana was born in the 80's."],
             "context_set": ""
           },
           {
@@ -39,7 +45,11 @@
           {
             "tag": "education",
             "patterns": ["what is your educational background", "tell me about your education", "education", "what degrees do you have"],
-            "responses": ["I hold a Ph.D. in Applied Linguistics and have expertise in German language and phonetics."],
+            "responses": [
+                "I hold a Ph.D. in Applied Linguistics and have expertise in German language and phonetics.",
+                "I'm a Phd in Applied Linguistics, so it was natural to study computer languages :) for now it is Python.",
+                "I always loved to study, so i gained PhD in Applied Linguistics. As scientist i fell in love with statistics and logic so the next step was to study programming and ML."
+              ],
             "context_set": ""
           },
           {
@@ -51,18 +61,18 @@
                 "I learned Python in Algebra College in Zagreb.",
                 "I am currently beginner Junior Python Developer. My coding skills you can see on my GitHub.",
                 "I can code in Python and my code you can finde on GitHub."
-            ],
+                ],
             "context_set": ""
           },
           {
             "tag": "tools",
-            "patterns": ["what tools do you use for programming", "which IDE do you prefer", "what coding environments do you work with"],
+            "patterns": ["which IDE do you prefer", "what coding environments do you work with"],
             "responses": ["I work with JupyterLab and Visual Studio Code (VSCode) for coding and development."],
             "context_set": ""
           },
           {
             "tag": "data_science",
-            "patterns": ["are you familiar with data science", "tell me about your data analysis skills", "do you know machine learning"],
+            "patterns": ["are you familiar with data science", "do you know anything beside python","tell me about your data analysis skills", "do you know machine learning"],
             "responses": ["I have basic knowledge about machine learning (ML), artificial intelligence (AI), data analysis, and data science.", "I have studied and worked on various beginner projects related to these fields.", "I'm taking online courses to gain skills in this area."],
             "context_set": ""
           },
@@ -73,19 +83,29 @@
             "context_set": ""
           },
           {
-            "tag": "job",
+            "tag": "about you",
+            "patterns": ["tell me more about you", "do you have hobbies", "what do you do in freetime", "do you have other skills"],
+            "responses": [
+                  "In my free time I train latin dances and I'm currently Nation Champion in Latin Dances. Beside that i also love learning, reading, technologie, concerts and meet my friends.",
+                  "Beside loving technologie, i'm athlete and currently national champion in latin dances; i'm realy into healthy living.",
+                  ""        
+                ],
+            "context_set": ""
+          },
+          {
+            "tag": "job place",
             "patterns": ["When can you start working?", "Are you open to remote work?"],
             "responses": [
-                  "For the start date, it would be best to have a live conversation to accommodate my current commitments. For further information, it would be best to communicate in person. My email is ivanamati@gmail.com. I'm looking forward to meet you",
-                  "I look forward to your call for a job interview. I am excited about the opportunity to showcase my skills. You can write to me on my email: ivanamati@gmail.com",
-                  "I am open to both remote work and working on-site, depending on the project requirements. For further information, it would be best to communicate via email or call. My email is ivanamati@gmail.com. I look forward to meeting you"
+                  "For the start date, it would be best to have a live conversation to accommodate my current commitments. For further information, it would be best to communicate in person. My email is ivanamati@gmail.com. I'm looking forward to meet you.",
+                  "I look forward to your call for a job interview. I am excited about the opportunity to showcase my skills. For better communication feel free to write me on my email: ivanamati@gmail.com :)",
+                  "I am open to both remote work and working on-site, depending on the project requirements. For further information, it would be best to communicate via email or call. My email is ivanamati@gmail.com. I look forward to meeting you."
                   
                 ],
             "context_set": ""
           },
           {
             "tag": "salary",
-            "patterns": ["What salary range are you expecting?", "what is your salary goal?", "salary", "what salary do you want?"],
+            "patterns": ["What salary range are you expecting?", " money ","Do you want salary?","do you want get payed?","what is your salary goal?", "salary", "what salary do you want?","can we talk about salary?"],
             "responses": [
                   "As a junior developer, I understand that specific salary expectations can be challenging. However, I can guarantee my dedication, hard work, and willingness to learn. With my growing expertise, we can discuss the appropriate compensation.",
                   "In terms of salary, I am aware that as a junior developer, it is difficult to request a specific amount. However, I can assure you of my commitment, hard work, and eagerness to learn."
@@ -97,17 +117,17 @@
             "patterns": ["How many hours are you looking to work?"],
             "responses": [
                   "Regarding the number of hours, I am open to discussing and accommodating the needs of the project.",
-                  "For further information, it would be best to communicate via email or call. My email is ivanamati@gmail.com. I look forward to meeting you,"
+                  "For further information, it would be best to communicate via email or call. My email is ivanamati@gmail.com. I look forward to meeting you."
                 ],
             "context_set": ""
           },
           {
              "tag": "contact",
-             "patterns": ["How can i contact you?", "how can i reach to you?", "can i call you?", "what is your email?", "can i get your number?"],
+             "patterns": ["How can i contact you?", "how can i reach to you?", "can i call you?", "what is your email?", "can i get your number?","how can we talk","can we meet in person?"],
              "responses": [
-                    "I can't give you my number, but you can get my Telegram via my WebCv: ivanamati.github.io. Looking forward to talk to you about job opportunity.",
-                    "For further information, it would be best to communicate via email or call. My email is ivanamati@gmail.com. I look forward to meeting you,",
-                    "You can write to me on my LinkedIn or my email: ivanamati@gmail.com",
+                    "My number is available on my CV (check my WebCV) or you can write to me on my email: ivanamati@gmail.com. Looking forward to talk to you about job opportunity.",
+                    "For further information, it would be best to communicate via email or call. My email is ivanamati@gmail.com. I look forward to meeting you.",
+                    "You can write to me on my LinkedIn or my email: ivanamati@gmail.com.",
                     "All information about contacting me, you can find on ivanamati.github.io.",
                     ""
                 ],
@@ -123,7 +143,41 @@
                 ""
                 ],
              "context_set": ""
-          }
+          },
+          {
+            "tag": "Ivybot",
+            "patterns": ["who are you", "what can you do", "what is IvyBot", "who programmed you", "what is your purpose?", "tell me more about you"],
+            "responses": [
+               "This is Ivy Bot, AI bot developed by Ivana(me) and Ivy can answer some questions about my education, programming experience and job whishes :) How can we help you?",
+               "This is Ivy Bot, Chatbot developed by Ivana(me) to show what I've learned so far about NLP and ML.",
+               "This is an AI Chatbot and it can answer you questions about me(iIvana) regarding my employment as developer. ",
+               "This is an AI Chatbot. Feel free to ask it anything about my education, job preferences or programming experience but for more information contact me directly on my email: ivanamati@gmail.com :) "
+               ],
+            "context_set": ""
+         },
+         {
+          "tag": "coding",
+          "patterns": ["what can you programm", "what are your programming skills as junior", 
+                       "where can i see your code"],
+          "responses": [
+             "I can code in Python and you can find my code you on my GitHub profile. The link is available on my WebCV :)",
+             "I finished education for Python developer so I am familiar with this programming language, but i can study and work hard to develop new programming skills. My programming skills, you can see on my GitHub profile :)",
+             "For now i am proficient in Python (you can check my code on GitHub), but i can always learn new skills. After education for Py-Developer I startet to learn about Data Analysis and Data Science but also about ML.",
+             "I know Python Language and if you need to see my work, my code is available at GitHub but I still do courses online and study to gain better skills. As junior developer I am ready to face new challenges."
+             ],
+          "context_set": ""
+       },
+       {
+        "tag": "job wishes",
+        "patterns": ["what are you looking for in a job", "are you looking for a job", "do you need a job", 
+                     "trazis li posao", "trebas li posao", "do you want a job"],
+        "responses": [
+           "I am looking for a job as junior developer and I am ready to learn and give my best! ",
+           "Currently I am looking for a job as junior developer. It would be nice to start as junior and to gain more experience. My coding skills so far you can see at my GitHub :)",
+           "Great Question. So, this ChatBot is one of my programms to show that I learn to code regulary as junior developer to gain more skills and knowledge to find a job. My other code is available at GitHub :) "
+           ],
+        "context_set": ""
+     }
         ]
       }
       
